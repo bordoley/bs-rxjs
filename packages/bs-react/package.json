@@ -1,0 +1,38 @@
+{
+  "name": "@bs-rxjs/bs-react",
+  "version": "0.0.0",
+  "description": "React bindings for bucklescript.",
+  "scripts": {
+    "build": "bsb -make-world",
+    "clean": "bsb -clean-world"
+  },
+  "keywords": [
+    "ocaml",
+    "react",
+    "reason",
+    "reasonml",
+    "BuckleScript"
+  ],
+  "author": {
+    "name": "David Bordoley",
+    "email": "bordoley@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "David Bordoley",
+      "email": "bordoley@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bordoley/bs-rxjs.git"
+  },
+  "dependencies": {
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2"
+  },
+  "devDependencies": {
+    "bs-platform": "^4.0.7"
+  }
+}

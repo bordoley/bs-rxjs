@@ -7,6 +7,10 @@
 *.cmx
 *.cmxs
 *.cmxa
+.DS_Store
+.nyc_output
+.merlin
+.bs.js
 
 # ocamlbuild working directory
 _build/
@@ -15,9 +19,12 @@ _build/
 *.byte
 *.native
 
-# oasis generated files
-setup.data
-setup.log
+# bsb build directory
+lib/
+build/
 
-# Merlin configuring file for Vim and Emacs
-.merlin
+node_modules/
+coverage/
+npm-debug.log
+lerna-debug.log
+yarn-error.log
