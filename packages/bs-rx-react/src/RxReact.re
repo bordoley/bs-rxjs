@@ -44,7 +44,7 @@ let useObservableState = {
     propsStream
     |> RxEvent.asObservable
     |> propsToState
-    //FIXME:|> RxObservables.observeOn(BsRxPriorityScheduler.immediate)
+    //FIXME:|> RxObservables.observeOn(RxPriorityScheduler.immediate)
     |> RxObservables.observe(~onNext, ~onError, ~onComplete);
   };
 

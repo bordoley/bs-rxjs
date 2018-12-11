@@ -23,7 +23,7 @@ let greetingStateComponent = {
 
   let render = (~key as _=?, ~props, ()) => {
     let {
-      BsRxReactStateDispatchComponent.RenderProps.state: {
+      RxReactStateDispatchComponent.RenderProps.state: {
         State.count,
         greeting,
         show,
@@ -41,7 +41,7 @@ let greetingStateComponent = {
     );
   };
 
-  BsRxReactStateDispatchComponent.create(~name, ~render, ());
+  RxReactStateDispatchComponent.create(~name, ~render, ());
 };
 
 let dispatcher: RxEvent.t(Action.t) = RxEvent.create();
@@ -95,9 +95,9 @@ Js.Global.setInterval(
 )
 |> ignore;
 
-BsRxDomLocation.instance
-|> BsRxDomLocation.asObservable
+RxDomLocation.instance
+|> RxDomLocation.asObservable
 |> RxObservables.onNext(Js.log)
 |> RxObservable.subscribe;
 
-BsRxDomLocation.instance |> BsRxDomLocation.update(_ => "?next=rock");
+RxDomLocation.instance |> RxDomLocation.update(_ => "?next=rock");

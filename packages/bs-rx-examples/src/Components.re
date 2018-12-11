@@ -40,7 +40,7 @@ let refTest =
 
 let focusableTextArea =
   textarea
-  |> BsRxReact.useImperativeMethods((ele, ()) =>
+  |> RxReact.useImperativeMethods((ele, ()) =>
        switch (Webapi.Dom.HtmlElement.ofElement(ele)) {
        | Some(ele) => ele |> Webapi.Dom.HtmlElement.focus
        | _ => ()

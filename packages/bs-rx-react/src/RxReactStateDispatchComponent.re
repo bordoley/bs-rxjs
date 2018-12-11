@@ -33,7 +33,7 @@ let createReactComponent = {
   (~name=?, ~renderDefault=?, ~renderExn=?, ~render) => {
     let propsToState = RxObservables.switchMap(f);
 
-    BsRxReact.createReactComponent(
+    RxReact.createReactComponent(
       ~name?,
       ~propsToState,
       ~renderDefault?,
