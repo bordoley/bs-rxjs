@@ -36,15 +36,25 @@ type state('state) =
   | Error(exn);
 
 let useObservableState = {
-  let onNext = (setState, next) => setState(Next(next));
-  let onError = (setState, exn) => setState(Error(exn));
-  let onComplete = (setState) => setState(Null);
+  // FIXME: Ideally we'd use an observeOn operator that uses the RX scheduler.
+  let callOnImmediateScheduler = (call, notif) =>
+    RxPriorityScheduler.immediate
+    |> RxPriorityScheduler.schedule((~shouldYield as _) => {
+         call(notif);
+         RxPriorityScheduler.Result.complete;
+       })
+    |> ignore;
+
+  let onNext = (setState, next) =>
+    callOnImmediateScheduler(setState, Next(next));
+  let onError = (setState, exn) =>
+    callOnImmediateScheduler(setState, Error(exn));
+  let onComplete = setState => callOnImmediateScheduler(setState, Null);
 
   let makeStateStream = (propsToState, setState, propsStream) =>
     propsStream
     |> RxEvent.asObservable
     |> propsToState
-    //FIXME:|> RxObservables.observeOn(RxPriorityScheduler.immediate)
     |> RxObservables.observe1(~onNext, ~onError, ~onComplete, setState);
 
   (propsToState, props) => {

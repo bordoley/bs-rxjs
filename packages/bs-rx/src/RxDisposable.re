@@ -16,8 +16,8 @@ module type S1 = {
 
 [@bs.send.pipe: t] external addDisposable: t => t = "add";
 
-[@bs.send]
-external addTeardown: ([@bs.uncurry] (unit => unit), t) => t = "add";
+[@bs.send.pipe: t]
+external addTeardown: ([@bs.uncurry] (unit => unit)) => t = "add";
 
 [@bs.new] [@bs.module "rxjs"] external create: unit => t = "Subscription";
 
