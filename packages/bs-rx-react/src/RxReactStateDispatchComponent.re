@@ -15,20 +15,21 @@ module RenderProps = {
 };
 
 let createReactComponent = {
+  let stateToRenderProps =
+      (dispatch, dispatcher, state)
+      : RenderProps.t('state, 'action, 'dispatch) => {
+    state,
+    dispatch,
+    dispatcher,
+  };
+
   let f =
       (
         {stateStream, dispatch, dispatcher}:
           Props.t('state, 'action, 'dispatcher),
-      ) => {
-    let stateToRenderProps =
-        (state): RenderProps.t('state, 'action, 'dispatch) => {
-      state,
-      dispatch,
-      dispatcher,
-    };
-    
-    stateStream |> RxObservables.map(stateToRenderProps);
-  };
+      ) =>
+    stateStream
+    |> RxObservables.map2(stateToRenderProps, dispatch, dispatcher);
 
   (~name=?, ~renderDefault=?, ~renderExn=?, ~render) => {
     let propsToState = RxObservables.switchMap(f);

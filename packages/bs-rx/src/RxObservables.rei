@@ -21,6 +21,8 @@ let ignoreElements: RxObservable.t('a) => RxObservable.t('b);
 let keep: ('a => bool, RxObservable.t('a)) => RxObservable.t('a);
 
 let map: ('a => 'b, RxObservable.t('a)) => RxObservable.t('b);
+let map1: (('ctx0, 'a) => 'b, 'ctx0, RxObservable.t('a)) => RxObservable.t('b);
+let map2: (('ctx0, 'ctx1, 'a) => 'b, 'ctx0, 'ctx1, RxObservable.t('a)) => RxObservable.t('b);
 
 let mergeArray:
   (
@@ -47,6 +49,16 @@ let observe:
     ~onNext: 'a => unit,
     ~onError: exn => unit,
     ~onComplete: unit => unit,
+    RxObservable.t('a)
+  ) =>
+  RxObservable.t('a);
+
+let observe1:
+  (
+    ~onNext: ('ctx0, 'a) => unit,
+    ~onError: ('ctx0, exn) => unit,
+    ~onComplete: ('ctx0) => unit,
+    'ctx0,
     RxObservable.t('a)
   ) =>
   RxObservable.t('a);

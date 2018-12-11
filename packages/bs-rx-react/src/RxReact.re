@@ -36,17 +36,16 @@ type state('state) =
   | Error(exn);
 
 let useObservableState = {
-  let makeStateStream = (propsToState, setState, propsStream) => {
-    let onNext = next => setState(Next(next));
-    let onError = exn => setState(Error(exn));
-    let onComplete = () => setState(Null);
+  let onNext = (setState, next) => setState(Next(next));
+  let onError = (setState, exn) => setState(Error(exn));
+  let onComplete = (setState) => setState(Null);
 
+  let makeStateStream = (propsToState, setState, propsStream) =>
     propsStream
     |> RxEvent.asObservable
     |> propsToState
     //FIXME:|> RxObservables.observeOn(RxPriorityScheduler.immediate)
-    |> RxObservables.observe(~onNext, ~onError, ~onComplete);
-  };
+    |> RxObservables.observe1(~onNext, ~onError, ~onComplete, setState);
 
   (propsToState, props) => {
     let propsStream = React.useMemo(RxEvent.create);

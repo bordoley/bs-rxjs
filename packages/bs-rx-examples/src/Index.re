@@ -52,22 +52,21 @@ let stateStore =
   );
 
 let sideEffectsSubscription = {
-  let onNext = action => {
-    let reducer = state =>
-      switch (action) {
-      | Action.Click => {...state, State.count: state.State.count + 1}
-      | Action.SetGreeting(greeting) => {...state, State.greeting}
-      | Action.Toggle => {...state, State.show: !state.State.show}
-      };
+  let reducer = (action, state) =>
+    switch (action) {
+    | Action.Click => {...state, State.count: state.State.count + 1}
+    | Action.SetGreeting(greeting) => {...state, State.greeting}
+    | Action.Toggle => {...state, State.show: !state.State.show}
+    };
 
-    stateStore |> RxValue.update(reducer);
-  };
-
-  let onComplete = () => stateStore |> RxValue.dispose;
+  let onNext = (stateStore, action) =>
+    stateStore |> RxValue.update1(reducer, action);
+  let onError = (stateStore, _) => stateStore |> RxValue.dispose;
+  let onComplete = stateStore => stateStore |> RxValue.dispose;
 
   dispatcher
   |> RxEvent.asObservable
-  |> RxObservables.observe(~onNext, ~onError=_ => (), ~onComplete)
+  |> RxObservables.observe1(~onNext, ~onError, ~onComplete, stateStore)
   |> RxObservable.subscribe;
 };
 

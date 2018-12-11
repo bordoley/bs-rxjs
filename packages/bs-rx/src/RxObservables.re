@@ -32,6 +32,14 @@ let keep = (predicate, observable) =>
 external mapOperator: ([@bs.uncurry] ('a => 'b)) => Operator.t('a, 'b) =
   "map";
 let map = (mapper, observable) => observable |> pipe(mapOperator(mapper));
+let map1 = (mapper, ctx0, observable) => {
+  let mapper = next => mapper(ctx0, next);
+  map(mapper, observable)
+};
+let map2 = (mapper, ctx0, ctx1, observable) => {
+  let mapper = next => mapper(ctx0, ctx1, next);
+   map(mapper, observable)
+};
 
 [@bs.val] [@bs.module "rxjs/operators"]
 external mergeMapOperator:
@@ -67,6 +75,14 @@ external observeOperator:
 // FIXME: Need to wrap the exception from JS in an ocaml exception
 let observe = (~onNext, ~onError, ~onComplete, observable) =>
   observable |> pipe(observeOperator(onNext, onError, onComplete));
+
+let observe1 = (~onNext, ~onError, ~onComplete, ctx0, observable) => {
+  let onNext = next => onNext(ctx0, next);
+  let onError = exn => onError(ctx0, exn);
+  let onComplete = () => onComplete(ctx0);
+
+  observe(~onNext, ~onError, ~onComplete, observable);
+};
 
 [@bs.val] [@bs.module "rxjs/operators"]
 external onNextOperator: ([@bs.uncurry] ('a => unit)) => Operator.t('a, 'b) =
