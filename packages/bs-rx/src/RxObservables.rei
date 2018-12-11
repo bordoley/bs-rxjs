@@ -1,5 +1,3 @@
-type error;
-
 let concatArray:
   (
     ~scheduler: RxPriorityScheduler.t=?,
@@ -47,7 +45,7 @@ let mergeMap:
 let observe:
   (
     ~onNext: 'a => unit,
-    ~onError: error => unit,
+    ~onError: exn => unit,
     ~onComplete: unit => unit,
     RxObservable.t('a)
   ) =>

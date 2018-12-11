@@ -4,14 +4,14 @@
   "description": "ReactDom bindings for bucklescript.",
   "scripts": {
     "build": "bsb -make-world",
-    "start": "bsb -make-world -w",
     "clean": "bsb -clean-world"
   },
   "keywords": [
-    "ocaml",
-    "react",
     "reason",
     "reasonml",
+    "ocaml",
+    "reactive",
+    "rx",
     "BuckleScript"
   ],
   "author": {

@@ -1,5 +1,5 @@
 {
-  "name": "@bs-rxjs/bs-rxjs",
+  "name": "@bs-rxjs/bs-rx-react",
   "package-specs": [
     {
       "module": "commonjs"
@@ -9,9 +9,13 @@
     }
   ],
   "suffix": ".bs.js",
-  "bs-dependencies": [],
+  "bs-dependencies": [
+    "@bs-rxjs/bs-react",
+    "@bs-rxjs/bs-rx"
+  ],
   "bs-dev-dependencies": [],
   "warnings": {
+    "number": "-44",
     "error": "+101"
   },
   "refmt": 3,

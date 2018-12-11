@@ -1,0 +1,24 @@
+{
+  "name": "@bs-rxjs/bs-rx-dom",
+  "package-specs": [
+    {
+      "module": "commonjs"
+    },
+    {
+      "module": "es6"
+    }
+  ],
+  "suffix": ".bs.js",
+  "bs-dependencies": [
+    "@bs-rxjs/bs-rx"
+  ],
+  "bs-dev-dependencies": [],
+  "warnings": {
+    "error": "+101"
+  },
+  "refmt": 3,
+  "sources": {
+    "dir": "src",
+    "subdirs": true
+  }
+}

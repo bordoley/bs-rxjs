@@ -1,10 +1,8 @@
 {
-  "name": "@bs-rxjs/bs-rxjs",
+  "name": "@bs-rxjs/bs-rx-dom",
   "version": "0.0.0",
-  "description": "RxJS bindings for bucklescript",
   "scripts": {
     "build": "bsb -make-world",
-    "start": "bsb -make-world -w",
     "clean": "bsb -clean-world"
   },
   "keywords": [
@@ -31,8 +29,7 @@
     "url": "https://github.com/bordoley/bs-rxjs.git"
   },
   "dependencies": {
-    "scheduler": "^0.11.2",
-    "@reactivex/rxjs": "^6.3.3"
+    "@bs-rxjs/bs-rx": "^0.0.0"
   },
   "devDependencies": {
     "bs-platform": "^4.0.7"

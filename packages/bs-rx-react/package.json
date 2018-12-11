@@ -1,7 +1,7 @@
 {
-  "name": "@bs-rxjs/bs-react",
+  "name": "@bs-rxjs/bs-rx-react",
   "version": "0.0.0",
-  "description": "React bindings for bucklescript.",
+  "description": "React Component using Rx for state management",
   "scripts": {
     "build": "bsb -make-world",
     "clean": "bsb -clean-world"
@@ -30,8 +30,8 @@
     "url": "https://github.com/bordoley/bs-rxjs.git"
   },
   "dependencies": {
-    "react": "16.7.0-alpha.2",
-    "react-dom": "16.7.0-alpha.2"
+    "@bs-rxjs/bs-react": "^0.0.0",
+    "@bs-rxjs/bs-rx": "^0.0.0"
   },
   "devDependencies": {
     "bs-platform": "^4.0.7"

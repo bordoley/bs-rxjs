@@ -1,0 +1,29 @@
+{
+  "name": "@bs-rxjs/bs-rx-examples",
+  "package-specs": [
+    {
+      "module": "commonjs"
+    },
+    {
+      "module": "es6"
+    }
+  ],
+  "suffix": ".bs.js",
+  "bs-dependencies": [
+    "bs-webapi",
+    "@bs-rxjs/bs-react",
+    "@bs-rxjs/bs-react-dom",
+    "@bs-rxjs/bs-rx",
+    "@bs-rxjs/bs-rx-dom",
+    "@bs-rxjs/bs-rx-react"
+  ],
+  "bs-dev-dependencies": [],
+  "warnings": {
+    "error": "+101"
+  },
+  "refmt": 3,
+  "sources": {
+    "dir": "src",
+    "subdirs": true
+  }
+}

@@ -1,10 +1,12 @@
 {
-  "name": "@bs-rxjs/bs-react",
+  "name": "@bs-rxjs/bs-rx-examples",
   "version": "0.0.0",
-  "description": "React bindings for bucklescript.",
+  "private": true,
   "scripts": {
     "build": "bsb -make-world",
-    "clean": "bsb -clean-world"
+    "clean": "bsb -clean-world",
+    "webpack": "webpack",
+    "webpack:production": "NODE_ENV=production webpack"
   },
   "keywords": [
     "reason",
@@ -30,10 +32,16 @@
     "url": "https://github.com/bordoley/bs-rxjs.git"
   },
   "dependencies": {
-    "react": "16.7.0-alpha.2",
-    "react-dom": "16.7.0-alpha.2"
+    "bs-webapi": "^0.13.1",
+    "@bs-rxjs/bs-react": "^0.0.0",
+    "@bs-rxjs/bs-react-dom": "^0.0.0",
+    "@bs-rxjs/bs-rx": "^0.0.0",
+    "@bs-rxjs/bs-rx-dom": "^0.0.0",
+    "@bs-rxjs/bs-rx-react": "^0.0.0"
   },
   "devDependencies": {
-    "bs-platform": "^4.0.7"
+    "bs-platform": "^4.0.7",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2"
   }
 }
